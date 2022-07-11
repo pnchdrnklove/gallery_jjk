@@ -1,11 +1,12 @@
+@import "./typography.css";
+
 :root {
   --border-radius: 4px;
   --color-text: #333;
   --color-primary: #7026b9;
   --color-code-bg: #fff4db;
   --color-code: #8a6534;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-sans: "AppleSDGothicNeo";
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --font-lg: 18px;
@@ -28,7 +29,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  font: sans-serif;
+  font: var(--font-sans);
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow-y: scroll;
@@ -37,9 +38,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
-  font-family: sans-serif;
   font-family: var(--font-sans);
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   word-wrap: break-word;
 }
@@ -222,3 +222,22 @@ pre tt:before,
 pre tt:after {
   content: none;
 }
+
+/* Custom */
+.contents {
+	margin: 0 auto;
+	/* max-width: var(--size-content);
+	padding: var(--size-gutter); */
+	width: 100%;
+}
+@media screen and (min-width: 768px) {
+	.site-container {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+	}	
+	.contents {
+		grid-column: 2 / 6;
+	}
+}
+
+/* */
