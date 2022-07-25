@@ -15,16 +15,38 @@
 .textCenter {
   text-align: center;
 }
-
 .intro {
   max-width: none;
   line-height: var(--line-height-loose);
+}
+
+
+.pageArrow {
+	position: fixed;
+	z-index: 100;
+	background-color: transparent;
+	bottom: 20px;
+	left: 50vw;
 }
 .photoMenu {
 	display: grid;
 	grid-template-rows: 1fr 1fr;
 }
+.menu {
+	position: relative;
+}
+.menuContainer {
+	display: flex;
+}
 .menu img {
 	width: 100vw;
 	height: 100vh;
+}
+.introduction {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.introduction p {
+	color: white;
 }

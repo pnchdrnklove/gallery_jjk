@@ -1,44 +1,44 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import "../css/header.css"
+import PropTypes from "prop-types"
+
+import * as styles from "../css/header.module.css"
 
 const Header = ({ siteTitle }) => (
-  <header className="sidebar">
+  <header className={styles.sidebar}>
 	<p>햄버거 메뉴 참고: https://alikong.tistory.com/34</p>
-	<div className="header-wrapper">
-		<div className="hambugerMenu">
-			<a class="menu-trigger" href="#">
-			    <span></span>
+	<div className={styles.headerWrapper}>
+		<div className={styles.hamburgerMenu}>
+			<a className={styles.menuTrigger} href="/">
+				<span></span>
 				<span></span>
 			</a>
 		</div>
+		<Link to="/" className={styles.siteTitle}>
+			  <h1>{siteTitle}</h1>
+		</Link>
 		<navigation>
-			<ul className="nav-list">
-				<li className="nav-items">
-					<Link to="artworks">
+			<ul className={styles.navList}>
+				<li className={styles.navItems}>
+					<Link to="/artworks" activeClassName={styles.active}>
 						Artworks
 					</Link>
 				</li>
-				<li className="nav-items">
-					<Link to="/">
+				<li className={styles.navItems}>
+					<Link to="/exhibitions" activeClassName={styles.active}>
 						Exhibitions
 					</Link>
 				</li>
-				<li className="nav-items">
-					<Link to="/">
+				<li className={styles.navItems}>
+					<Link to="/about" activeClassName={styles.active}>
 						About
 					</Link>
 				</li>
 			</ul>	
 		</navigation>
-		<Link to="/" className="site-title">
-			  <h1>{siteTitle}</h1>
-		</Link>
-	</div>
+	  </div>
   </header>
 )
-
 Header.propTypes = {
   siteTitle: PropTypes.string,
 }
