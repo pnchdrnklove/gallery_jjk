@@ -232,6 +232,7 @@ html {
 	/* max-width: var(--size-content);
 	padding: var(--size-gutter); */
 	width: 100%;
+	padding-top: 74px;
 }
 @media screen and (min-width: 768px) {
 	.site-container {
@@ -240,7 +241,13 @@ html {
 	}	
 	.contents {
 		grid-column: 2 / 6;
+		padding-top: 0;
 	}
 }
-
+.notScroll {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: auto;
+}
 /* */

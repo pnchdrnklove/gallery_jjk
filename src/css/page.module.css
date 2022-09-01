@@ -1,0 +1,33 @@
+.contentsWrapper {
+	padding: 1.5rem;
+}
+@media screen and (min-width: 768px) {
+	.contentsWrapper {
+		padding: 3rem;
+	}
+}
+
+.carouselWrapper {
+	overflow: hidden;
+	width: 350px;
+	height: 250px;
+}
+.carouselContainer {
+	display: flex;
+}
+.carouselImage {
+	/* img 태그에서의 object-fit: contain을 대체(IE 호환성) */
+	background-position: 50% 50%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	
+	/* flex 컨테이너의 크기를 넘지 않게 하기 위해 최소로 줄어드는 상황 방지 */
+	flex: none;
+	
+	max-width: 350px;
+	max-height: 250px;
+}
+
+p { 
+	max-width: none;
+}

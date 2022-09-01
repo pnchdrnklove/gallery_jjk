@@ -1,67 +1,81 @@
 .sidebar {
 	width: 100%;
 	position: fixed;
-	padding: 2rem;
-	background-color: rgba(0, 0, 0, 0.5);
+	padding: 1.5rem;
+	background-color: rgba(0, 0, 0, 0.85);
 	z-index: 100;
+}
+@media screen and (min-width:768px) {
+	.sidebar {
+		position: relative;
+		top: 0;
+	}
 }
 .sidebar p {
 	color: white;
 }
 .headerWrapper {
 	display: flex;
-	flex-direction: row;
-}
-.menuTrigger,
-.menuTrigger span {
-  display: inline-block;
-  transition: all .4s;
-  box-sizing: border-box;
-}
-.menuTrigger {
-  position: relative;
-  width: 2em;
-  height: calc(2em - 8px);
-}
-.menuTrigger span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #fff;
-  border-radius: 4px;
-}
-.menuTrigger span:last-child {
-	bottom: 0;
-}
-@media screen and (min-width: 768px) {
-	.menuTrigger {
-		display: none;
-	}
-}
-.hamburgerMenu {
-	
+	/* flex-direction: row; */
 }
 .siteTitle {
+	z-index: 2;
+	top: 6px;
+	margin-left: 10px;
 	font-size: var(--font-sm);
 	text-decoration: none;
 	color: white;
+	transition: .4s;
 }
 .siteTitle > h1 {
 	margin: 0;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
-navigation {
-	display: none;
+@media screen and (min-width: 640px) {
+	.siteTitle {
+		top: 0;
+		margin-left: 0;
+	}
+	.siteTitle > h1 {
+		margin-bottom: 1rem;
+	}
+}
+.navWrapper {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	margin-top: 75px;
+	padding: 0px 64px 32px 64px;
+	width: 100vw;
+	height: 100vh;
+	max-height: 0;
+	transition: all .3s ease-in-out;
 }
 @media screen and (min-width: 768px) {
-	navigation {
-		display: block;
+	.navWrapper {
+		visibility: visible;
+		position: static;
+		width: 100%;
+		margin: 0;
+		padding: 0;
 	}
 }
 .navList {
 	margin: 0;
+	display: grid;
+	grid-template-rows: repeat(5, calc(100vh/5));
+	visibility: hidden;
 	list-style: none;
+	transition: .1s;
+}
+@media screen and (min-width: 768px) {
+	.navList {
+		display: block;
+		visibility: visible;
+		color: white;
+	}
 }
 .navItems {
 	display: inline;
@@ -69,8 +83,7 @@ navigation {
 }
 .navItems a {
 	text-decoration: none;
-	color: white;
-	transition: .3s;
+	color: black;
 }
 .navItems a:hover {
 	color: red;
@@ -78,6 +91,55 @@ navigation {
 .navItems a.active {
 	color: red;
 }
+@media screen and (min-width: 768px) {
+	.navItems a {
+		color: white;
+	}
+}
+/* <--------- 햄버거 메뉴 */
+.hamburgerIcon {
+	z-index: 2;
+	position: relative;
+}
+@media screen and (min-width:768px) {
+	.hamburgerIcon {
+		display: none;
+	}
+}
+.hamburgerCheck {
+	display: none;
+}
+.hamburgerIcon span {
+	width: 20px;
+	height: 2px;
+	margin: 6px 6px 10px 6px;
+	
+	display: block;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 1px;
+	transition: all .4s;
+}
+.hamburgerIcon span:last-child {
+	margin-bottom: 6px;
+}
+.hamburgerCheck:checked~.navWrapper {
+	visibility: visible;
+	max-height: 100vh;
+	background-color: white;
+	transition: all .5s;
+}
+.hamburgerCheck:checked~.navWrapper > .navList {
+	visibility: visible;
+}
+.hamburgerCheck:checked~.hamburgerIcon > span {
+	transform: translateY(6px) rotate(45deg);
+}
+.hamburgerCheck:checked~.hamburgerIcon > span:last-child {
+	transform: translateY(-6px) rotate(-45deg);
+}
+/* 햄버거 메뉴 ---------> */
+
 @media screen and (min-width: 640px) {
 	.sidebar {
 		width: 100%;
@@ -96,4 +158,16 @@ navigation {
 	.navItems {
 		display: block;
 	}
+}
+.subMenuList {
+	display: none;
+}
+@media screen and (min-width:640px) {
+	.subMenuList {
+		display: block;
+	}
+}
+.subMenuItems {
+	list-style: none;
+	text-decoration: none;
 }
