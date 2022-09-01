@@ -66,7 +66,9 @@ const Header = ({ siteTitle }) => {
 			linkKey: '',			
 		},
 	];
-	const [scrollPosition, setScrollPosition] = React.useState(window.pageYOffset);
+	if(typeof window !== 'undefined') {
+		const [scrollPosition, setScrollPosition] = React.useState(window.pageYOffset);
+	}
 	
 	const hamburgerCheckRef = React.useRef();
 	const headerRef = React.useRef();
