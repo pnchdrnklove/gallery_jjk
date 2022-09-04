@@ -66,7 +66,7 @@ const Header = ({ siteTitle }) => {
 			linkKey: '',			
 		},
 	];
-	const [scrollPosition, setScrollPosition] = 0;
+	const [scrollPosition, setScrollPosition] = React.useState(0);
 	
 	const hamburgerCheckRef = React.useRef();
 	const headerRef = React.useRef();
