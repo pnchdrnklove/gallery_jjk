@@ -9,8 +9,8 @@
 
 .carouselWrapper {
 	overflow: hidden;
-	width: 350px;
-	height: 250px;
+	position: relative;
+	width: 100%;
 }
 .carouselContainer {
 	display: flex;
@@ -24,10 +24,35 @@
 	/* flex 컨테이너의 크기를 넘지 않게 하기 위해 최소로 줄어드는 상황 방지 */
 	flex: none;
 	
-	max-width: 350px;
-	max-height: 250px;
+	max-width: 100%;
+	max-height: 50vw;
+	
+	display: flex;
+	align-items: center;
 }
-
+.carouselArrowWrapper {
+	position: absolute;
+	top: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 15%;
+	height: 100%;
+}
+.carouselArrowWrapper:first-child {
+	left: 0;
+}
+.carouselArrowWrapper:last-child {
+	right: 0;
+}
+.carouselArrow {
+	color: #888;
+	transition: 0.5s;
+}
+.carouselArrow:hover {
+	color: #111;
+}
 p { 
 	max-width: none;
 }

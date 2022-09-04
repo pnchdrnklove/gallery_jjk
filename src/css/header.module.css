@@ -4,6 +4,7 @@
 	padding: 1.5rem;
 	background-color: rgba(0, 0, 0, 0.85);
 	z-index: 100;
+	word-break: keep-all;
 }
 @media screen and (min-width:768px) {
 	.sidebar {
