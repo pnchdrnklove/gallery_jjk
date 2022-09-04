@@ -2,7 +2,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { createPage } = actions
 	const result = await graphql(`
   	{
-      allMarkdownRemark {
+    	index: allMarkdownRemark(filter: {frontmatter: {template: {eq: "index"}}}) {
+				edges {
+					node {
+          	frontmatter {
+	            path
+  	        }
+    	    }
+      	}
+    	}
+			introduction: allMarkdownRemark(filter: {frontmatter: {template: {eq: "introduction"}}}) {
 				edges {
 					node {
           	frontmatter {
@@ -17,11 +26,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		reporter.panicOnBuild(`Error while running GraphQL query.`)
 		return
 	}
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.introduction.edges.forEach(({ node }) => {
     const path = node.frontmatter.path
 		createPage({
       path,
       component: require.resolve(`./src/templates/introduction.js`),
+      context: {
+				pagePath: path,
+				imagePath: "photos"+path,
+			},
+    })
+  })
+	result.data.index.edges.forEach(({ node }) => {
+    const path = node.frontmatter.path
+		createPage({
+      path,
+      component: require.resolve(`./src/templates/index.js`),
       context: {
 				pagePath: path,
 				imagePath: "photos"+path,
