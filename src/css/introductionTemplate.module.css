@@ -6,11 +6,16 @@
 		padding: 3rem;
 	}
 }
-
+.carousel {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	position: relative;
+}
 .carouselWrapper {
 	overflow: hidden;
 	position: relative;
-	width: 100%;
+	width: 80%;
 }
 .carouselContainer {
 	display: flex;
@@ -37,7 +42,7 @@
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	width: 15%;
+	width: 10%;
 	height: 100%;
 }
 .carouselArrowWrapper:first-child {

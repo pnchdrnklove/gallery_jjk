@@ -39,12 +39,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 	result.data.index.edges.forEach(({ node }) => {
     const path = node.frontmatter.path
+		const lowerDir = ["other-artworks", "other-long-exposure", "ship-long-exposure", "solar-long-exposure", "other-exhibitions", "seashore", "trajectory"]
+		lowerDir.map((dir, idx) => {
+			return (
+				lowerDir[idx] = "photos" + path + "/" + dir
+			)
+		})
+		console.log(lowerDir);
 		createPage({
       path,
       component: require.resolve(`./src/templates/index.js`),
       context: {
 				pagePath: path,
 				imagePath: "photos"+path,
+				lowerDir: lowerDir,
 			},
     })
   })
