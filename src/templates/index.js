@@ -23,25 +23,25 @@ export default function Index({
 	
 	let myList = []
 	let a = {}
-	a.dir = photoList[0].dir
-	a.photo = []
+	a['dir'] = photoList[0]['dir']
+	a['photo'] = []
 	
 	for (let idx = 0; idx < photoList.length; idx++) {
-		if (a.dir !== photoList[idx].dir) {			
+		if (a['dir'] !== photoList[idx]['dir']) {			
 			let clone = Object.assign({}, a);
 			myList.push(clone)
-			a.dir = photoList[idx]['dir']
-			a.photo = []
+			a['dir'] = photoList[idx]['dir']
+			a['photo'] = []
 		}
-		a.photo.push(photoList[idx].photo)
+		a['photo'].push(photoList[idx]['photo'])
 		if (idx === photoList.length-1) {
     	myList.push(a)
   	}
 	}
 	myList.forEach(item => {
-		const itemDir = item.dir.split('/')
+		const itemDir = item['dir'].split('/')
 		const itemCategory = itemDir[itemDir.length - 1]
-		item.dir = itemCategory
+		item['dir'] = itemCategory
 	})
 	
 	const list = [
