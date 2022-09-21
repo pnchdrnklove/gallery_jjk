@@ -20,30 +20,31 @@ export default function Index({
 			}
 		)
 	})
-	
 	let myList = []
-	let a = {}
-	a['dir'] = photoList[0]['dir']
-	a['photo'] = []
-	
-	for (let idx = 0; idx < photoList.length; idx++) {
-		if (a['dir'] !== photoList[idx]['dir']) {			
-			let clone = Object.assign({}, a);
-			myList.push(clone)
-			a['dir'] = photoList[idx]['dir']
-			a['photo'] = []
+	let a = {}	
+	if (photoList[0] !== undefined) {
+		a['dir'] = photoList[0]['dir']
+		a['photo'] = []
+
+		for (let idx = 0; idx < photoList.length; idx++) {
+			if (a['dir'] !== photoList[idx]['dir']) {			
+				let clone = Object.assign({}, a);
+				myList.push(clone)
+				a['dir'] = photoList[idx]['dir']
+				a['photo'] = []
+			}
+			a['photo'].push(photoList[idx]['photo'])
+			if (idx === photoList.length-1) {
+				myList.push(a)
+			}
 		}
-		a['photo'].push(photoList[idx]['photo'])
-		if (idx === photoList.length-1) {
-    	myList.push(a)
-  	}
+		myList.forEach(item => {
+			const itemDir = item['dir'].split('/')
+			const itemCategory = itemDir[itemDir.length - 1]
+			item['dir'] = itemCategory
+		})
 	}
-	myList.forEach(item => {
-		const itemDir = item['dir'].split('/')
-		const itemCategory = itemDir[itemDir.length - 1]
-		item['dir'] = itemCategory
-	})
-	
+
 	const list = [
 		{
 			id: 'artworks',
@@ -119,7 +120,7 @@ export default function Index({
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 448 512">
 											<path d="M288 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h50.7L169.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L384 141.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H288zM80 64C35.8 64 0 99.8 0 144V400c0 44.2 35.8 80 80 80H336c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16h80c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z" />
 										</svg>
-										{myList.map(myItem => {
+										{myList?.map(myItem => {
 											if(myItem.dir === subMenuItems.id) {
 												const photo = myItem.photo[Math.floor(Math.random()*myItem.photo.length)];
 											return (
