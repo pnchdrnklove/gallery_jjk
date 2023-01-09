@@ -79,6 +79,7 @@
 .navItems a {
 	text-decoration: none;
 	color: black;
+	transition: 0.5s;
 }
 .navItems a:hover {
 	color: red;

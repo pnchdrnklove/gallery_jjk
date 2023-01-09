@@ -19,6 +19,8 @@
 }
 .carouselContainer {
 	display: flex;
+	transition: 0.5s;
+	margin: -100%;
 }
 .carouselImage {
 	/* img 태그에서의 object-fit: contain을 대체(IE 호환성) */
@@ -51,11 +53,13 @@
 .carouselArrowWrapper:last-child {
 	right: 0;
 }
-.carouselArrow {
+.carouselArrowButton {
+	background: transparent;
+	border: transparent;
 	color: #888;
 	transition: 0.5s;
 }
-.carouselArrow:hover {
+.carouselArrowButton:hover {
 	color: #111;
 }
 p { 

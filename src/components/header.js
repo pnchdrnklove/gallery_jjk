@@ -107,9 +107,16 @@ const Header = ({ siteTitle }) => {
 					<ul className={styles.navList}>
 						{list.map(items => (
 							<li className={styles.navItems} key={items.ko}>
-								<Link to={"/"+items.linkKey} activeClassName={styles.active} key={items.linkKey} onClick={onClick}>
-									{items.ko}
-								</Link>
+								{
+									items.linkKey !== ''
+										? <Link to={"/"+items.linkKey} activeClassName={styles.active} key={items.linkKey} onClick={onClick}>
+												{items.ko}
+											</Link>
+										:
+											<Link to={"/"+items.linkKey} key={items.linkKey} onClick={onClick}>
+												{items.ko}
+											</Link>
+								}
 								<ul className={styles.subMenuList}>
 									{items.subMenu?.map(subMenuItems => (
 										<li className={styles.subMenuItems} key={subMenuItems.ko}>
