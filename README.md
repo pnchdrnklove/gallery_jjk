@@ -1,17 +1,7 @@
-## [header.js]
+## [introduction.js]
+ 
+1. Carousel 작업 완료
 
-1. 기타
- 
- - '홈으로' 항목 active 미적용
-  
-	* navbar의 items.linkKey === '' 일 때, activeName 미적용(삼항연산자)
+## [layout.js]
 
-## [header.css]
-
-1. 기타
- 
- - navItems 마우스 hover 시 transition 0.5s 적용
- 
- ## [introduction.js]
- 
- 1. 
+1. header component 높이에 따라 contents div padding-Top 설정 작업 중

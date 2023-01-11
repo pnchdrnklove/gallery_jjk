@@ -45,7 +45,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				lowerDir[idx] = "photos" + path + "/" + dir
 			)
 		})
-		console.log(lowerDir);
 		createPage({
       path,
       component: require.resolve(`./src/templates/index.js`),

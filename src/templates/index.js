@@ -43,7 +43,7 @@ export default function Index({
 			item['dir'] = itemCategory
 		})
 	}
-	console.log(myList)
+
 	const list = [
 		{
 			id: 'artworks',

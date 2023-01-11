@@ -234,7 +234,7 @@ html {
 	width: 100%;
 	padding-top: 74px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
 	.site-container {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
@@ -243,6 +243,12 @@ html {
 		grid-column: 2 / 6;
 		padding-top: 0;
 	}
+}
+@media screen and (min-width: 1600px) {
+	.site-container {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+	}	
 }
 .notScroll {
 	position: fixed;
