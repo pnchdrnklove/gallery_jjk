@@ -124,7 +124,7 @@ export default function Index({
                         const photo = myItem.photo[Math.floor(Math.random()*myItem.photo.length)];
                         return (
                           <div className={styles.photoWrapper} key={photo.images.fallback.src}>
-                            <GatsbyImage image={photo} alt="샘플 사진" />
+                            <GatsbyImage image={photo} alt="샘플 사진" className={styles.photo} />
                           </div>
                         )
                       }

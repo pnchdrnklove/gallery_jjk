@@ -57,7 +57,7 @@ const Header = ({ siteTitle }) => {
 		},
 		{
 			id: 'about',
-			ko: '작가소개',
+			ko: '작가 소개',
 			linkKey: 'about',
 		},
 		{

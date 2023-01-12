@@ -20,21 +20,25 @@ const IndexPage = ({
 			id: 'artworks',
 			ko: '작품사진',
 			linkKey: 'artworks',
+      desc: `태양 장노출, 폐선 장노출, 일반 작품 등을 소개합니다.`,
 		},
 		{
 			id: 'exhibitions',
 			ko: '전시',
 			linkKey: 'exhibitions',
+      desc: `"태양의 궤적", "갯가의 흔적" 등 작가가 진행했던 전시들을 소개합니다.`,
 		},
 		{
 			id: 'about',
-			ko: '작가소개',
+			ko: '작가 소개',
 			linkKey: 'about',
+      desc: `작가 소개입니다.`,
 		},
 		{
 			id: 'home',
-			ko: '',
-			linkKey: '',			
+			ko: '맨 위로',
+			linkKey: '',
+      desc: '',
 		},
 	];
 	
@@ -58,10 +62,8 @@ const IndexPage = ({
 							<div className={styles.photoContainer}>
 								<GatsbyImage image={items.image} alt={items.id} className={styles.photo}/>
 								<div className={styles.intro}>
-									<h1 className={styles.introTitle}>{items.ko}</h1>
-									<p>
-										"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-									</p>
+                  <h1 className={styles.introTitle}>{items.ko}</h1>
+                  <p>{items.desc}</p>
 								</div>
 							</div>
 						</Link>
