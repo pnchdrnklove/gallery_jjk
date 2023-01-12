@@ -72,10 +72,8 @@
 .navList {
 	opacity: 0;
 	margin: 0;
-	display: grid;
-	/* grid-template-rows: repeat(5, calc(100vh/5)); */
-	list-style: none;
-	transition: .1s;
+  display: none;
+  transition: .1s;
 }
 @media screen and (min-width: 1024px) {
 	.navList {
@@ -145,6 +143,8 @@
 }
 .hamburgerCheck:checked~.navWrapper > .navList {
 	opacity: 1;
+  display: grid;
+	list-style: none;
 }
 .hamburgerCheck:checked~.hamburgerIcon > span {
 	transform: translateY(6px) rotate(45deg);

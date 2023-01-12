@@ -147,7 +147,7 @@ const Header = ({ siteTitle }) => {
 					<span></span>
 					<span></span>
 				</label>
-				<Link to="/" className={styles.siteTitle}>
+				<Link to="/" className={styles.siteTitle} onClick={onClick}>
 					  <h1>{siteTitle}</h1>
 				</Link>
 				<div className={styles.navWrapper} style={navWrapperStyle}>
@@ -167,7 +167,7 @@ const Header = ({ siteTitle }) => {
 								<ul className={styles.subMenuList}>
 									{items.subMenu?.map(subMenuItems => (
 										<li className={styles.subMenuItems} key={subMenuItems.ko}>
-											<Link to={"/"+items.linkKey+"/"+subMenuItems.linkKey} activeClassName={styles.active} key={subMenuItems.linkKey}>
+											<Link to={"/"+items.linkKey+"/"+subMenuItems.linkKey} activeClassName={styles.active} key={subMenuItems.linkKey} onClick={onClick}>
 												{subMenuItems.ko}
 											</Link>
 										</li>
