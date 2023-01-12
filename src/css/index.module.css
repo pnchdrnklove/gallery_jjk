@@ -41,7 +41,6 @@
 .photo {
 	transform: scale(1.0);
 	transition: all .5s ease-in-out;
-	width: 100vw;
 	height: 100vh;
 }
 .photo:hover {

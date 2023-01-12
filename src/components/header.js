@@ -66,11 +66,55 @@ const Header = ({ siteTitle }) => {
 			linkKey: '',			
 		},
 	];
+
+	// 브라우저 화면크기 감지하여(windowSize.width < 1024) header 높이에 따라 margin-bottom 설정
+	let defaultWidth;
+  let defaultHeight;
+
+  if (typeof window !== `undefined`) {
+    defaultWidth = window.innerWidth;
+    defaultHeight = window.innerHeight;
+  };
+
+  const [height, setHeight] = React.useState(0);
+	const [sidebarWrapperStyle, setSidebarWrapperStyle] = React.useState({paddingBottom: `${height}px`});
+  const [windowSize, setWindowSize] = React.useState({
+		width: defaultWidth,
+		height: defaultHeight
+	});
+  const [navWrapperStyle, setnavWrapperStyle] = React.useState({marginTop: `${height}px`});
+	
+  const headerRef = React.useRef();
+
+	React.useEffect(() => {
+		if (headerRef && windowSize.width < 1024) {
+			setHeight(headerRef.current.offsetHeight);
+			setSidebarWrapperStyle({paddingBottom: `${height}px`});
+      setnavWrapperStyle({marginTop: `${height}px`});
+		} else if (windowSize.width >= 1024) {
+      setnavWrapperStyle({marginTop: `0px`});
+    }
+	}, [height, windowSize]);
+
+	const handleResize = () => {
+		setWindowSize({
+			width: window.innerWidth,
+			height: window.innerHeight
+		});
+	}
+	
+	React.useEffect(() => {
+		window.addEventListener('resize', () => {
+			handleResize();
+			setHeight(headerRef.current.offsetHeight);
+		});
+		return () => { //clean up
+			window.removeEventListener('resize', handleResize);
+		}
+	}, []);
+	//
+	// 스크롤 위치 기억했다가 햄버거 메뉴 열고 닫을 때 복원
 	const [scrollPosition, setScrollPosition] = React.useState(0);
-	
-	const hamburgerCheckRef = React.useRef();
-	const headerRef = React.useRef();
-	
 	const onChange = (e) => {
 		if (e.target.checked) {
 			setScrollPosition(window.pageYOffset);
@@ -82,17 +126,20 @@ const Header = ({ siteTitle }) => {
 			document.body.classList.remove('notScroll');
 			window.scrollTo(0, scrollPosition);
 		}
-	}
-	
+	};
+	//
+	// 햄버거 메뉴
+	const hamburgerCheckRef = React.useRef();
 	const onClick = (e) => {
 		if (hamburgerCheckRef.current.checked) {
 			document.body.classList.remove('notScroll');
 			headerRef.current.style['top'] = 0;
 			document.body.style['top'] = 0;
 		}
-	}
-
+	};
+	//
 	return (
+		<div style={sidebarWrapperStyle}>
 		<header className={styles.sidebar} ref={headerRef}>
 			<div className={styles.headerWrapper}>
 				<input className={styles.hamburgerCheck} id="hamburgerCheck" type="checkbox" onChange={onChange} ref={hamburgerCheckRef} />
@@ -101,9 +148,9 @@ const Header = ({ siteTitle }) => {
 					<span></span>
 				</label>
 				<Link to="/" className={styles.siteTitle}>
-					  <h1>정종관 갤러리</h1>
+					  <h1>{siteTitle}</h1>
 				</Link>
-				<div className={styles.navWrapper}>
+				<div className={styles.navWrapper} style={navWrapperStyle}>
 					<ul className={styles.navList}>
 						{list.map(items => (
 							<li className={styles.navItems} key={items.ko}>
@@ -132,6 +179,7 @@ const Header = ({ siteTitle }) => {
 				</div>
 			</div>
 		</header>
+		</div>
 	)
 }
 Header.propTypes = {

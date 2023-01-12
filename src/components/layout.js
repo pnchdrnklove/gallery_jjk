@@ -16,40 +16,15 @@ const Layout = ({ children }) => {
     }
   `);
 
-  const [height, setHeight] = React.useState(0);
-  const [style, setStyle] = React.useState({paddingTop: `${height}`});
-  const ref = React.useRef(null);
-  
-  React.useEffect(() => {
-    setHeight(ref.current.offsetHeight);
-    console.log(ref.current.offsetHeight);
-    console.log(ref)
-
-    setStyle({paddingTop: `${height}`});
-  }, [height]);
-  
-  // const [headerHeight, setHeaderHeight] = React.useState(0);
-  // const ref = React.useRef(null);
-
-  // React.useRef(() => {
-  //   setHeaderHeight(ref.current.clientHeight);
-  //   console.log('height: ', ref.current.clientHeight);
-  // }, []);
-
   return (
     <>
 	  <div className="site-container">
-      <Header siteTitle={data.site.siteMetadata?.title} ref={ref} />
-		  <div className="contents" style={style}>
-			<main>{children}</main>
-			<footer
-			  style={{
-				marginTop: `var(--space-5)`,
-				fontSize: `var(--font-sm)`,
-			  }}
-			>
-				© {new Date().getFullYear()} by Jongkwan Jung
-			</footer>
+      <Header siteTitle={String(data.site.siteMetadata?.title)} />
+		  <div className="contents">
+			  <main>{children}</main>
+        <footer className="footer">
+          © {new Date().getFullYear()} by Jongkwan Jung
+			  </footer>
 		  </div>
 	  </div>
     </>
